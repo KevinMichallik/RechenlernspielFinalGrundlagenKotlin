@@ -17,7 +17,6 @@ fun main() {
 
     println("Tipp die 1 für alleine gegen den Computer spielen, oder die 2 wenn ihr gemeinsam lernen wollt:")
 
-
     var anzahlSpieler = readln().toInt()
 
     if (anzahlSpieler == 1) {
@@ -55,8 +54,8 @@ fun main() {
     println("Bitte wähle die Rechenart aus:")
     var rechenArtWaehlen = readln().toInt()
 
-
     // Start der Aufgaben
+
     if (rechenArtWaehlen == 1) {
         fun additionInGame() {
 
@@ -65,20 +64,16 @@ fun main() {
 
                 do {
                     player1.addition()
-                    if (player1.win)
-                        player1.score++
+                    if (player1.win) player1.score++
                     computer.additionComputer()
-                    if (computer.win)
-                        computer.score++
+                    if (computer.win) computer.score++
 
                     rundenzaehler++
                 } while (rundenzaehler <= 2)   // Anzahl der Runden vorgeben!!
 
                 println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
-                if (player1.score == computer.score)
-                    println("Das spiel ging unentschieden aus.")
-                if (player1.score > computer.score)
-                    println("Du hast gewonnen!!!")
+                if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
+                if (player1.score > computer.score) println("Du hast gewonnen!!!")
                 else println("Der Computer hat gewonnen!")
             }
 
@@ -88,26 +83,21 @@ fun main() {
                 do {
                     println("${player1.name} ")
                     player1.addition()
-                    if (player1.win)
-                        player1.score++
+                    if (player1.win) player1.score++
                     println("${player2.name} ")
                     player2.addition()
-                    if (player2.win)
-                        player2.score++
+                    if (player2.win) player2.score++
 
                     rundenzaehler++
                 } while (rundenzaehler <= 2)   // Anzahl der Runden vorgeben!!
 
                 println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
-                if (player1.score == player2.score)
-                    println("Das Spiel ging unentschieden aus.")
-                if (player1.score > player2.score)
-                    println("${player1.name} hat gewonnen!!!")
+                if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
+                if (player1.score > player2.score) println("${player1.name} hat gewonnen!!!")
                 else println("${player2.name} hat gewonnen!")
             }
         }
     }
-
     if (rechenArtWaehlen == 2) {
         fun subtraktionInGame() {
 
@@ -115,20 +105,16 @@ fun main() {
 
                 do {
                     player1.subtraktion()
-                    if (player1.win)
-                        player1.score++
+                    if (player1.win) player1.score++
                     computer.subtraktionComputer()
-                    if (computer.win)
-                        computer.score++
+                    if (computer.win) computer.score++
 
                     rundenzaehler++
                 } while (rundenzaehler <= 2)   // Anzahl der Runden vorgeben!!
 
                 println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
-                if (player1.score == computer.score)
-                    println("Das spiel ging unentschieden aus.")
-                if (player1.score > computer.score)
-                    println("Du hast gewonnen!!!")
+                if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
+                if (player1.score > computer.score) println("Du hast gewonnen!!!")
                 else println("Der Computer hat gewonnen!")
             }
 
@@ -138,26 +124,21 @@ fun main() {
                 do {
                     println("${player1.name} ")
                     player1.subtraktion()
-                    if (player1.win)
-                        player1.score++
+                    if (player1.win) player1.score++
                     println("${player2.name} ")
                     player2.subtraktion()
-                    if (player2.win)
-                        player2.score++
+                    if (player2.win) player2.score++
 
                     rundenzaehler++
                 } while (rundenzaehler <= 2)   // Anzahl der Runden vorgeben!!
 
                 println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
-                if (player1.score == player2.score)
-                    println("Das Spiel ging unentschieden aus.")
-                if (player1.score > player2.score)
-                    println("${player1.name} hat gewonnen!!!")
+                if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
+                if (player1.score > player2.score) println("${player1.name} hat gewonnen!!!")
                 else println("${player2.name} hat gewonnen!")
             }
         }
     }
-
     if (rechenArtWaehlen == 3) {
         fun multiplikationInGame() {
 
@@ -165,20 +146,16 @@ fun main() {
 
                 do {
                     player1.multiplikation()
-                    if (player1.win)
-                        player1.score++
+                    if (player1.win) player1.score++
                     computer.multiplikationComputer()
-                    if (computer.win)
-                        computer.score++
+                    if (computer.win) computer.score++
 
                     rundenzaehler++
                 } while (rundenzaehler <= 2)   // Anzahl der Runden vorgeben!!
 
                 println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
-                if (player1.score == computer.score)
-                    println("Das spiel ging unentschieden aus.")
-                if (player1.score > computer.score)
-                    println("Du hast gewonnen!!!")
+                if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
+                if (player1.score > computer.score) println("Du hast gewonnen!!!")
                 else println("Der Computer hat gewonnen!")
             }
 
@@ -188,21 +165,17 @@ fun main() {
                 do {
                     println("${player1.name} ")
                     player1.multiplikation()
-                    if (player1.win)
-                        player1.score++
+                    if (player1.win) player1.score++
                     println("${player2.name} ")
                     player2.multiplikation()
-                    if (player2.win)
-                        player2.score++
+                    if (player2.win) player2.score++
 
                     rundenzaehler++
                 } while (rundenzaehler <= 2)   // Anzahl der Runden vorgeben!!
 
                 println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
-                if (player1.score == player2.score)
-                    println("Das Spiel ging unentschieden aus.")
-                if (player1.score > player2.score)
-                    println("${player1.name} hat gewonnen!!!")
+                if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
+                if (player1.score > player2.score) println("${player1.name} hat gewonnen!!!")
                 else println("${player2.name} hat gewonnen!")
             }
         }
