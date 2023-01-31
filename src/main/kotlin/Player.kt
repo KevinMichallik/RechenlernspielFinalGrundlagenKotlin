@@ -7,21 +7,21 @@ open class Player(
 
     open fun addition() {
 
-        var adzahl1 = 1..50
-        var adzahl2 = 1..50
+        var calcNumber1 = 1..50
+        var calcNumber2 = 1..50
 
 
-        var add1 = adzahl1.random()
-        var add2 = adzahl2.random()
-        var ergebnis = add1 + add2
+        var add1 = calcNumber1.random()
+        var add2 = calcNumber2.random()
+        var result = add1 + add2
 
 
         println(" Bitte Rechne folgendes: $add1 + $add2")
-        println("Tippe dein Ergebnis ein:")
+        println("Tippe dein result ein:")
 
-        var ergebnisPlayer = readln().toInt()
+        var resultPlayer = readln().toInt()
 
-        if (ergebnisPlayer == ergebnis) {
+        if (resultPlayer == result) {
             win = true
             println("Super weiter so!!")
 
@@ -34,21 +34,21 @@ open class Player(
 
     open fun subtraktion() {
 
-        var subzahl1 = 50..100
-        var subzahl2 = 1..49
+        var calcNumber1 = 50..100
+        var calcNumber2 = 1..49
 
 
-        var add1 = subzahl1.random()
-        var add2 = subzahl2.random()
-        var ergebnis = add1 - add2
+        var add1 = calcNumber1.random()
+        var add2 = calcNumber2.random()
+        var result = add1 - add2
 
 
         println(" Bitte Rechne folgendes: $add1 - $add2")
-        println("Tippe dein Ergebnis ein:")
+        println("Tippe dein result ein:")
 
-        var ergebnisPlayer = readln().toInt()
+        var resultPlayer = readln().toInt()
 
-        if (ergebnisPlayer == ergebnis) {
+        if (resultPlayer == result) {
             win = true
             println("Super weiter so!!")
 
@@ -61,21 +61,21 @@ open class Player(
 
     open fun multiplikation(){
 
-        var mulzahl1 = 1..50
-        var mulzahl2 = 1..50
+        var calcNumber1 = 1..50
+        var calcNumber2 = 1..50
 
 
-        var add1 = mulzahl1.random()
-        var add2 = mulzahl2.random()
-        var ergebnis = add1 * add2
+        var add1 = calcNumber1.random()
+        var add2 = calcNumber2.random()
+        var result = add1 * add2
 
 
         println(" Bitte Rechne folgendes: $add1 * $add2")
-        println("Tippe dein Ergebnis ein:")
+        println("Tippe dein result ein:")
 
-        var ergebnisPlayer = readln().toInt()
+        var resultPlayer = readln().toInt()
 
-        if (ergebnisPlayer == ergebnis) {
+        if (resultPlayer == result) {
             win = true
             println("Super weiter so!!")
 
@@ -85,6 +85,8 @@ open class Player(
 
 
     }
+
+    // TODO Divison hinzufügen
 
 
 

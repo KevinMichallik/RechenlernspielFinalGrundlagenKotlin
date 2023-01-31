@@ -1,6 +1,6 @@
 open class PlayerComputer(name: String = "", age: Int = 0) : Player(name, age, win = false) {
 
-    val nameList = mutableListOf<String>("Peter", "Paul", "Tina")
+    val nameList = mutableListOf<String>("C3-PO", "JARVIS", "STORM-TROOPER", "WALL-E", "R2D2")
     val ageList = 6..99
 
 
@@ -12,18 +12,18 @@ open class PlayerComputer(name: String = "", age: Int = 0) : Player(name, age, w
 
     open fun additionComputer() {
 
-        var adzahl1 = 1..50
-        var adzahl2 = 1..50
+        var calcNumber1 = 1..50
+        var calcNumber2 = 1..50
 
 
-        var add1 = adzahl1.random()
-        var add2 = adzahl2.random()
-        var ergebnis = add1 + add2
-        var ergebnisComputer = mutableListOf<Int>(ergebnis, 52, 8, 6, 75, 88, 23, 41, 3, 88).random()
+        var add1 = calcNumber1.random()
+        var add2 = calcNumber2.random()
+        var result = add1 + add2
+        var resultComputer = (result -3.. result +3).random()
 
-        println("$add1 + $add2 = $ergebnisComputer")
+        println("$add1 + $add2 = $resultComputer")
 
-        if (ergebnis == ergebnisComputer) {
+        if (result == resultComputer) {
             this.win = true
             println("Der Computer hat richtig gerechnet")
 
@@ -35,18 +35,18 @@ open class PlayerComputer(name: String = "", age: Int = 0) : Player(name, age, w
     open fun subtraktionComputer(){
 
 
-            var subzahl1 = 50..100
-            var subzahl2 = 1..49
+            var calcNumber1 = 50..100
+            var calcNumber2 = 1..49
 
 
-            var add1 = subzahl1.random()
-            var add2 = subzahl2.random()
-            var ergebnis = add1 - add2
-            var ergebnisComputer = mutableListOf<Int>(ergebnis, 52, 8, 6, 75, 88, 23, 41, 3, 88).random()
+            var add1 = calcNumber1.random()
+            var add2 = calcNumber2.random()
+            var result = add1 - add2
+            var resultComputer = (result -3..result +3).random()
 
-            println("$add1 - $add2 = $ergebnisComputer")
+            println("$add1 - $add2 = $resultComputer")
 
-            if (ergebnis == ergebnisComputer) {
+            if (result == resultComputer) {
                 this.win = true
                 println("Der Computer hat richtig gerechnet")
 
@@ -57,18 +57,18 @@ open class PlayerComputer(name: String = "", age: Int = 0) : Player(name, age, w
 
     open fun multiplikationComputer(){
 
-        var mulzahl1 = 1..10
-        var mulzahl2 = 1..10
+        var calcNumber1 = 1..10
+        var calcNumber2 = 1..10
 
 
-        var add1 = mulzahl1.random()
-        var add2 = mulzahl2.random()
-        var ergebnis = add1 * add2
-        var ergebnisComputer = mutableListOf<Int>(ergebnis, 52, 8, 6, 75, 88, 23, 41, 3, 88).random()
+        var add1 = calcNumber1.random()
+        var add2 = calcNumber2.random()
+        var result = add1 * add2
+        var resultComputer = (result -3 .. result +3).random()
 
-        println("$add1 * $add2 = $ergebnisComputer")
+        println("$add1 * $add2 = $resultComputer")
 
-        if (ergebnis == ergebnisComputer) {
+        if (result == resultComputer) {
             this.win = true
             println("Der Computer hat richtig gerechnet")
 
@@ -76,6 +76,8 @@ open class PlayerComputer(name: String = "", age: Int = 0) : Player(name, age, w
 
 
     }
+
+    // TODO Division hinzufügen
 
 
 }
