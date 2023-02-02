@@ -1,40 +1,36 @@
+import kotlin.concurrent.thread
+
 fun main() {
 
-    // initialisierung der Spieler
+    // Spieler & Rechenarten
+    val player1: Player = Player()
+    val player2: Player = Player()
+    val addition: RechnungAddition = RechnungAddition()
+    val subtraktion: RechnungSubtraktion = RechnungSubtraktion()
+    val multiplikation: RechnungMultiplikation = RechnungMultiplikation()
+    val division: RechnungDivision = RechnungDivision()
 
-    var player1: Player = Player()
-    var player2: Player = Player()
-    var computer: PlayerComputer = PlayerComputer()
+    // Computer 6 Rechenarten
+    val computer: PlayerComputer = PlayerComputer()
+    val additionComputer: RechnungAdditionComputer = RechnungAdditionComputer()
+    val subtraktionComputer: RechnungSubtraktionComputer = RechnungSubtraktionComputer()
+    val multiplikationComputer: RechnungMultiplikationComputer = RechnungMultiplikationComputer()
+    val divisionComputer: RechnungDivisionComputer = RechnungDivisionComputer()
 
+    // Variablen für den Spielablauf
     var lapCounter = 0
+    var roundQuantity = 10
+    var playerQuantity: Int = 0
+    var calculationType = 0
+    var spielende: Int
 
     // Begrüßung
-
     println("Hallo und Willkommen im Rechenlernspiel!!")
+
+    // Anzahl der Spieler muss angegeben werden und die Daten der Spieler
     println("Bitte gib an, ob du alleine üben möchtest, oder ob Ihr zu zweit lernen möchtet.")
-
-    // Anzahl der Spieler muss angegeben werden und die Daten
-
-
-
-    var playerQuantity: Int = 0
-
-    fun playerCounter() {
-        println("Tipp die 1 für alleine gegen den Computer spielen, oder die 2 wenn ihr gemeinsam lernen wollt:")
-        try {
-            playerQuantity = readln().toInt()
-        } catch (e: Exception) {
-            println("Leider hast du keine gültige Zahl eingegeben, bitte wiederhole es:")
-            playerCounter()
-        }
-        if(playerQuantity >2 || playerQuantity <1){
-            println("Bitte eine gültige Zahl eingeben (Die 1 oder die 2)")
-            playerCounter()
-        }
-    }
-
-    playerCounter()
-
+    println("Tipp die 1 für alleine gegen den Computer spielen, oder die 2 wenn ihr gemeinsam lernen wollt:")
+    playerQuantity = readln().toInt()
     fun spielerAnlegen() {
 
         if (playerQuantity == 1) {
@@ -59,16 +55,14 @@ fun main() {
             player2.age = readln().toInt()
         }
     }
-
     spielerAnlegen()
 
+    // Auswahl der Rundenanzahl pro Spiel
     println("Wie viele Aufgaben soll die Spielrunde haben? Gib bitte eine Zahl ein:")
-    lapCounter = readln().toInt()
+    println("Sollte ein Falscher Wert eingegeben werden, gilt der Standartwert von 10 Runden.")
+    roundQuantity = readln().toIntOrNull() ?: 10
 
     // Auswahl der Rechenart
-
-    var calculationType = 0
-
     fun calculationType() {
         println("Jetzt ist es an der Zeit zu entscheiden was gerechnet werden soll.")
         println("Folgendes steht zur Auswahl:")
@@ -80,24 +74,27 @@ fun main() {
         println("Bitte wähle die Rechenart aus:")
         calculationType = readln().toInt()
     }
-
     calculationType()
 
+
     // Start der Aufgaben
-
     fun additionInGame() {
-
 
         if (playerQuantity == 1) {
 
             do {
-                player1.addition()
-                if (player1.win) player1.score++
-                computer.additionComputer()
-                if (computer.win) computer.score++
+                println("${player1.name} bitte rechne:")
+                addition.calcAddition()
+                if (addition.win) player1.score++
+                Thread.sleep(1_000)
+                println("${computer.name} rechnet jetzt:")
+                additionComputer.calcAddition()
+                Thread.sleep(1_000)
+                if (additionComputer.win) computer.score++
 
                 lapCounter++
-            } while (lapCounter <= 2)   // Anzahl der Runden vorgeben!!
+
+            } while (lapCounter <= roundQuantity)
 
             println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
             if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
@@ -109,15 +106,17 @@ fun main() {
         if (playerQuantity == 2) {
 
             do {
-                println("${player1.name} ")
-                player1.addition()
-                if (player1.win) player1.score++
-                println("${player2.name} ")
-                player2.addition()
-                if (player2.win) player2.score++
+                println("${player1.name} bitte rechne:")
+                addition.calcAddition()
+                if (addition.win) player1.score++
+
+                println("${player2.name} bitte rechne: ")
+                addition.calcAddition()
+                if (addition.win) player2.score++
 
                 lapCounter++
-            } while (lapCounter <= 2)   // Anzahl der Runden vorgeben!!
+
+            } while (lapCounter <= roundQuantity)
 
             println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
             if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
@@ -131,13 +130,19 @@ fun main() {
         if (playerQuantity == 1) {
 
             do {
-                player1.subtraktion()
-                if (player1.win) player1.score++
-                computer.subtraktionComputer()
-                if (computer.win) computer.score++
+                println("${player1.name} bitte rechne:")
+                subtraktion.calcSubtraktion()
+                if (subtraktion.win)
+                    player1.score++
+                Thread.sleep(1_000)
+
+                println("${computer.name} rechnet jetzt:")
+                subtraktionComputer.calcSubtraktion()
+                if (subtraktionComputer.win) computer.score++
+                Thread.sleep(1_000)
 
                 lapCounter++
-            } while (lapCounter <= 2)   // Anzahl der Runden vorgeben!!
+            } while (lapCounter <= roundQuantity)   // Anzahl der Runden vorgeben!!
 
             println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
             if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
@@ -149,15 +154,20 @@ fun main() {
         if (playerQuantity == 2) {
 
             do {
-                println("${player1.name} ")
-                player1.subtraktion()
-                if (player1.win) player1.score++
-                println("${player2.name} ")
-                player2.subtraktion()
-                if (player2.win) player2.score++
+                println("${player1.name} bitte rechne:")
+                subtraktion.calcSubtraktion()
+                if (subtraktion.win)
+                    player1.score++
+                Thread.sleep(1_000)
+
+                println("${player2.name} bitte rechne:")
+                subtraktion.calcSubtraktion()
+                if (subtraktion.win)
+                    player2.score++
+                Thread.sleep(1_000)
 
                 lapCounter++
-            } while (lapCounter <= 2)   // Anzahl der Runden vorgeben!!
+            } while (lapCounter <= roundQuantity)   // Anzahl der Runden vorgeben!!
 
             println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
             if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
@@ -171,13 +181,67 @@ fun main() {
         if (playerQuantity == 1) {
 
             do {
-                player1.multiplikation()
-                if (player1.win) player1.score++
-                computer.multiplikationComputer()
-                if (computer.win) computer.score++
+                println("${player1.name} bitte rechne:")
+                multiplikation.calcMultiplikation()
+                if (multiplikation.win) player1.score++
+                Thread.sleep(1_000)
+
+                println("${computer.name} rechnet jetzt:")
+                multiplikationComputer.calcMultiplikation()
+                if (multiplikationComputer.win) computer.score++
+                Thread.sleep(1_000)
 
                 lapCounter++
-            } while (lapCounter <= 2)   // Anzahl der Runden vorgeben!!
+
+            } while (lapCounter <= roundQuantity)   // Anzahl der Runden vorgeben!!
+
+            println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
+            if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
+            if (player1.score > computer.score) println("Du hast gewonnen!!!")
+            else println("Der Computer hat gewonnen!")
+        }
+
+
+        if (playerQuantity == 2) {
+
+            do {
+                println("${player1.name} bitte rechne:")
+                multiplikation.calcMultiplikation()
+                if (multiplikation.win) player1.score++
+                Thread.sleep(1_000)
+
+                println("${player2.name} bitte rechne:")
+                multiplikation.calcMultiplikation()
+                if (multiplikation.win) player2.score++
+                Thread.sleep(1_000)
+
+                lapCounter++
+            } while (lapCounter <= roundQuantity)   // Anzahl der Runden vorgeben!!
+
+            println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
+            if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
+            if (player1.score > player2.score) println("${player1.name} hat gewonnen!!!")
+            else println("${player2.name} hat gewonnen!")
+        }
+    }
+
+    fun divisionInGame() {
+
+        if (playerQuantity == 1) {
+
+            do {
+                println("${player1.name} bitte rechne:")
+                division.calcDivision()
+                if (division.win) player1.score++
+                Thread.sleep(1_000)
+
+                println("${computer.name} rechnet jetzt:")
+                divisionComputer.calcDivision()
+                if (divisionComputer.win) computer.score++
+                Thread.sleep(1_000)
+
+                lapCounter++
+            } while (lapCounter <= roundQuantity)   // Anzahl der Runden vorgeben!!
 
             println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
             if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
@@ -190,14 +254,17 @@ fun main() {
 
             do {
                 println("${player1.name} ")
-                player1.multiplikation()
-                if (player1.win) player1.score++
+                division.calcDivision()
+                if (division.win) player1.score++
+                Thread.sleep(1_000)
+
                 println("${player2.name} ")
-                player2.multiplikation()
-                if (player2.win) player2.score++
+                division.calcDivision()
+                if (division.win) player2.score++
+                Thread.sleep(1_000)
 
                 lapCounter++
-            } while (lapCounter <= 2)   // Anzahl der Runden vorgeben!!
+            } while (lapCounter <= roundQuantity)   // Anzahl der Runden vorgeben!!
 
             println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
             if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
@@ -205,8 +272,6 @@ fun main() {
             else println("${player2.name} hat gewonnen!")
         }
     }
-
-    // TODO Funktion Rechenart Division einfügen
 
     if (calculationType == 1) {
         additionInGame()
@@ -217,10 +282,13 @@ fun main() {
     if (calculationType == 3) {
         multiplikationInGame()
     }
-    // TODO Rechenart Divison einfügen
+    if (calculationType == 4) {
+        divisionInGame()
+    }
 
+    // Abschluss nach den Aufgaben & Abfrage ob weiter gespielt werden soll
     println("Wie soll es weiter gehen? Drücke die 1 um nochmal zu spielen oder die 2 zum Beenden.")
-    var spielende = readln().toInt()
+    spielende = readln().toInt()
 
     if (spielende == 1) {
         main()
