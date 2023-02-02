@@ -26,7 +26,7 @@ fun main() {
 
     // Begrüßung
     println("Hallo und Willkommen im Rechenlernspiel!!")
-
+    println()
     // Anzahl der Spieler muss angegeben werden und die Daten der Spieler
     println("Bitte gib an, ob du alleine üben möchtest, oder ob Ihr zu zweit lernen möchtet.")
     println("Tipp die 1 für alleine gegen den Computer spielen, oder die 2 wenn ihr gemeinsam lernen wollt:")
