@@ -19,7 +19,7 @@ class RechnungAddition(calcRange1: IntRange = 1..50, calcRange2: IntRange = 1..5
         println("$add1 + $add2")
         println("Tippe dein Ergenis ein:")
 
-        val resultPlayer = readln().toInt()
+        val resultPlayer = safeReadInt()
         Thread.sleep(1_000)
         if (resultPlayer == result) {
             win = true

@@ -1,5 +1,4 @@
-import kotlin.concurrent.thread
-
+//TODO SAFEREADLINE EINARBEITEN
 fun main() {
 
     // Spieler & Rechenarten
@@ -10,7 +9,7 @@ fun main() {
     val multiplikation: RechnungMultiplikation = RechnungMultiplikation()
     val division: RechnungDivision = RechnungDivision()
 
-    // Computer 6 Rechenarten
+    // Computer & Rechenarten
     val computer: PlayerComputer = PlayerComputer()
     val additionComputer: RechnungAdditionComputer = RechnungAdditionComputer()
     val subtraktionComputer: RechnungSubtraktionComputer = RechnungSubtraktionComputer()
@@ -30,7 +29,14 @@ fun main() {
     // Anzahl der Spieler muss angegeben werden und die Daten der Spieler
     println("Bitte gib an, ob du alleine üben möchtest, oder ob Ihr zu zweit lernen möchtet.")
     println("Tipp die 1 für alleine gegen den Computer spielen, oder die 2 wenn ihr gemeinsam lernen wollt:")
-    playerQuantity = readln().toInt()
+
+
+        playerQuantity = safeReadInt()
+
+    while (playerQuantity <1 || playerQuantity >2){
+        println("Bitte gib eine gültige Zahl ein.:")
+        playerQuantity = safeReadInt()}
+
     fun spielerAnlegen() {
 
         if (playerQuantity == 1) {
@@ -38,7 +44,7 @@ fun main() {
             println("Bitte gib deinen Namen ein:")
             player1.name = readln()
             println("Bitte gib dein alter ein:")
-            player1.age = readln().toInt()
+            player1.age = safeReadInt()
 
         }
         if (playerQuantity == 2) {
@@ -46,21 +52,22 @@ fun main() {
             println("Bitte gib deinen Namen ein:")
             player1.name = readln()
             println("Bitte gib dein alter ein:")
-            player1.age = readln().toInt()
+            player1.age = safeReadInt()
 
 
             println("Bitte gib den Namen des 2. Spielers ein:")
             player2.name = readln()
             println("Bitte gib das Alter von Spieler 2 ein:")
-            player2.age = readln().toInt()
+            player2.age = safeReadInt()
         }
     }
     spielerAnlegen()
 
+
     // Auswahl der Rundenanzahl pro Spiel
     println("Wie viele Aufgaben soll die Spielrunde haben? Gib bitte eine Zahl ein:")
-    println("Sollte ein Falscher Wert eingegeben werden, gilt der Standartwert von 10 Runden.")
-    roundQuantity = readln().toIntOrNull() ?: 10
+
+    roundQuantity = safeReadInt()
 
     // Auswahl der Rechenart
     fun calculationType() {
@@ -70,9 +77,11 @@ fun main() {
         println("2. - Subtraktion")
         println("3. - Multiplikation")
         println("4. - Division")
-
+        Thread.sleep(1_000)
         println("Bitte wähle die Rechenart aus:")
-        calculationType = readln().toInt()
+        calculationType = safeReadInt()
+        Thread.sleep(1_000)
+
     }
     calculationType()
 
@@ -98,8 +107,8 @@ fun main() {
 
             println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
             if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
-            if (player1.score > computer.score) println("Du hast gewonnen!!!")
-            else println("Der Computer hat gewonnen!")
+            if (player1.score > computer.score) println("Du hast gewonnen!! Tolle Leistung für eine/n ${player1.age} jährige/n !")
+            if (player1.score < computer.score) println("${computer.name} hat gewonnen")
         }
 
 
@@ -120,8 +129,8 @@ fun main() {
 
             println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
             if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
-            if (player1.score > player2.score) println("${player1.name} hat gewonnen!!!")
-            else println("${player2.name} hat gewonnen!")
+            if (player1.score > player2.score) println("${player1.name} hat gewonnen!! Tolle Leistung für eine/n ${player1.age} jährige/n !")
+            else println("${player2.name} hat gewonnen! Tolle Leistung für eine/n ${player2.age} jährige/n !")
         }
     }
 
@@ -132,8 +141,7 @@ fun main() {
             do {
                 println("${player1.name} bitte rechne:")
                 subtraktion.calcSubtraktion()
-                if (subtraktion.win)
-                    player1.score++
+                if (subtraktion.win) player1.score++
                 Thread.sleep(1_000)
 
                 println("${computer.name} rechnet jetzt:")
@@ -146,8 +154,8 @@ fun main() {
 
             println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
             if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
-            if (player1.score > computer.score) println("Du hast gewonnen!!!")
-            else println("Der Computer hat gewonnen!")
+            if (player1.score > computer.score) println("Du hast gewonnen!! Tolle Leistung für eine/n ${player1.age} jährige/n !")
+            if (player1.score < computer.score) println("${computer.name} hat gewonnen")
         }
 
 
@@ -156,14 +164,12 @@ fun main() {
             do {
                 println("${player1.name} bitte rechne:")
                 subtraktion.calcSubtraktion()
-                if (subtraktion.win)
-                    player1.score++
+                if (subtraktion.win) player1.score++
                 Thread.sleep(1_000)
 
                 println("${player2.name} bitte rechne:")
                 subtraktion.calcSubtraktion()
-                if (subtraktion.win)
-                    player2.score++
+                if (subtraktion.win) player2.score++
                 Thread.sleep(1_000)
 
                 lapCounter++
@@ -171,8 +177,8 @@ fun main() {
 
             println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
             if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
-            if (player1.score > player2.score) println("${player1.name} hat gewonnen!!!")
-            else println("${player2.name} hat gewonnen!")
+            if (player1.score > player2.score) println("${player1.name} hat gewonnen!! Tolle Leistung für eine/n ${player1.age} jährige/n !")
+            else println("${player2.name} hat gewonnen! Tolle Leistung für eine/n ${player2.age} jährige/n !")
         }
     }
 
@@ -197,8 +203,8 @@ fun main() {
 
             println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
             if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
-            if (player1.score > computer.score) println("Du hast gewonnen!!!")
-            else println("Der Computer hat gewonnen!")
+            if (player1.score > computer.score) println("Du hast gewonnen!! Tolle Leistung für eine/n ${player1.age} jährige/n !")
+            if (player1.score < computer.score) println("${computer.name} hat gewonnen")
         }
 
 
@@ -220,8 +226,8 @@ fun main() {
 
             println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
             if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
-            if (player1.score > player2.score) println("${player1.name} hat gewonnen!!!")
-            else println("${player2.name} hat gewonnen!")
+            if (player1.score > player2.score) println("${player1.name} hat gewonnen!! Tolle Leistung für eine/n ${player1.age} jährige/n !")
+            else println("${player2.name} hat gewonnen! Tolle Leistung für eine/n ${player2.age} jährige/n !")
         }
     }
 
@@ -245,8 +251,8 @@ fun main() {
 
             println("Du hast ${player1.score} Punkte und der Computer hat ${computer.score}.")
             if (player1.score == computer.score) println("Das spiel ging unentschieden aus.")
-            if (player1.score > computer.score) println("Du hast gewonnen!!!")
-            else println("Der Computer hat gewonnen!")
+            if (player1.score > computer.score) println("Du hast gewonnen!!! Tolle Leistung für eine/n ${player1.age} jährige/n !!")
+            if (player1.score < computer.score) println("${computer.name} hat gewonnen")
         }
 
 
@@ -267,9 +273,9 @@ fun main() {
             } while (lapCounter <= roundQuantity)   // Anzahl der Runden vorgeben!!
 
             println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
-            if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
-            if (player1.score > player2.score) println("${player1.name} hat gewonnen!!!")
-            else println("${player2.name} hat gewonnen!")
+            if (player1.score == player2.score){ println("Das Spiel ging unentschieden aus.")}
+            if (player1.score > player2.score){ println("${player1.name} hat gewonnen!! Tolle Leistung für eine/n ${player1.age} jährige/n ! ")}
+            else println("${player2.name} hat gewonnen!Tolle Leistung für eine/n ${player2.age} jährige/n ! ")
         }
     }
 
@@ -288,7 +294,11 @@ fun main() {
 
     // Abschluss nach den Aufgaben & Abfrage ob weiter gespielt werden soll
     println("Wie soll es weiter gehen? Drücke die 1 um nochmal zu spielen oder die 2 zum Beenden.")
-    spielende = readln().toInt()
+    spielende = safeReadInt()
+
+    while (spielende <1 || spielende >2){
+        println("Bitte gib eine gültige Zahl ein.:")
+        spielende = safeReadInt()}
 
     if (spielende == 1) {
         main()
@@ -298,6 +308,8 @@ fun main() {
     }
 
 }
+
+
 
 
 

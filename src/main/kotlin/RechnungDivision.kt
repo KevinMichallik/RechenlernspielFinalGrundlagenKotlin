@@ -21,7 +21,7 @@ class RechnungDivision(calcRange1: IntRange = 10..10, calcRange2: IntRange = 10.
         println("$result1 / $add2")
         println("Tippe dein Ergenis ein:")
 
-        val resultPlayer = readln().toInt()
+        val resultPlayer = safeReadInt()
         Thread.sleep(1_000)
         if (resultPlayer == result2) {
             win = true

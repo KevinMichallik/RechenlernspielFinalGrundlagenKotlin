@@ -19,7 +19,7 @@ class RechnungSubtraktion (calcRange1: IntRange = 50..100, calcRange2: IntRange 
         println("$add1 - $add2")
         println("Tippe dein Ergebnis ein:")
 
-        var resultPlayer = readln().toInt()
+        var resultPlayer = safeReadInt()
         Thread.sleep(1_000)
         if (resultPlayer == result) {
             win = true

@@ -1,19 +1,15 @@
 class RechnungAdditionComputer(calcRange1: IntRange = 1..50, calcRange2: IntRange = 1..50) :
     Rechnung(calcRange1, calcRange2) {
 
-    init {
-        this.calcRange1 = 1..50
-        this.calcRange2 = 1..50
-    }
 
     fun calcAddition() {
 
-        val calcNumber1 = calcRange1
-        val calcNumber2 = calcRange2
+        val calcNumber1 = calcRange1.random()
+        val calcNumber2 = calcRange2.random()
 
 
-        val add1 = calcNumber1.random()
-        val add2 = calcNumber2.random()
+        val add1 = calcNumber1
+        val add2 = calcNumber2
         val result = add1 + add2
 
 
