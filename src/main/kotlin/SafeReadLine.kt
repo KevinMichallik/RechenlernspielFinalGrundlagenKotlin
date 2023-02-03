@@ -1,4 +1,3 @@
-
 fun safeReadInt(): Int {
 
     var srl: Int
@@ -10,11 +9,7 @@ fun safeReadInt(): Int {
     } catch (e: Exception) {
         println("Bitte wiederhole deine Eingabe mit einer korrekten angabe.")
         safeReadInt()
-
-
     }
-
-
 }
 
 

@@ -1,4 +1,4 @@
-//TODO SAFEREADLINE EINARBEITEN
+
 fun main() {
 
     // Spieler & Rechenarten
@@ -31,11 +31,12 @@ fun main() {
     println("Tipp die 1 für alleine gegen den Computer spielen, oder die 2 wenn ihr gemeinsam lernen wollt:")
 
 
-        playerQuantity = safeReadInt()
+    playerQuantity = safeReadInt()
 
-    while (playerQuantity <1 || playerQuantity >2){
+    while (playerQuantity < 1 || playerQuantity > 2) {
         println("Bitte gib eine gültige Zahl ein.:")
-        playerQuantity = safeReadInt()}
+        playerQuantity = safeReadInt()
+    }
 
     fun spielerAnlegen() {
 
@@ -273,9 +274,12 @@ fun main() {
             } while (lapCounter <= roundQuantity)   // Anzahl der Runden vorgeben!!
 
             println("${player1.name} hat ${player1.score} Punkte und ${player2.name} hat ${player2.score}.")
-            if (player1.score == player2.score){ println("Das Spiel ging unentschieden aus.")}
-            if (player1.score > player2.score){ println("${player1.name} hat gewonnen!! Tolle Leistung für eine/n ${player1.age} jährige/n ! ")}
-            else println("${player2.name} hat gewonnen!Tolle Leistung für eine/n ${player2.age} jährige/n ! ")
+            if (player1.score == player2.score) {
+                println("Das Spiel ging unentschieden aus.")
+            }
+            if (player1.score > player2.score) {
+                println("${player1.name} hat gewonnen!! Tolle Leistung für eine/n ${player1.age} jährige/n ! ")
+            } else println("${player2.name} hat gewonnen!Tolle Leistung für eine/n ${player2.age} jährige/n ! ")
         }
     }
 
@@ -296,9 +300,10 @@ fun main() {
     println("Wie soll es weiter gehen? Drücke die 1 um nochmal zu spielen oder die 2 zum Beenden.")
     spielende = safeReadInt()
 
-    while (spielende <1 || spielende >2){
+    while (spielende < 1 || spielende > 2) {
         println("Bitte gib eine gültige Zahl ein.:")
-        spielende = safeReadInt()}
+        spielende = safeReadInt()
+    }
 
     if (spielende == 1) {
         main()
