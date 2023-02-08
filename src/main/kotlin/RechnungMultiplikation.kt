@@ -17,12 +17,16 @@ class RechnungMultiplikation(calcRange1: IntRange = 1..10, calcRange2: IntRange 
         println("Tippe dein Ergenis ein:")
 
         var resultPlayer = safeReadInt()
+        win = false
         Thread.sleep(1_000)
         if (resultPlayer == result) {
             win = true
             println("Super weiter so!!")
+            println()
 
-        } else
+        } else {
             println("Leider falsch.")
+            println()
+        }
     }
 }

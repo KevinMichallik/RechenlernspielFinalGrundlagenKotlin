@@ -17,14 +17,18 @@ class RechnungAdditionComputer(calcRange1: IntRange = 1..50, calcRange2: IntRang
 
 
         var resultPlayer = (result - 2..result + 2).random()
+        win = false
 
         println("Das Ergenis des Computers ist: $resultPlayer")
 
         if (resultPlayer == result) {
             win = true
             println("Super weiter so!!")
+            println()
 
-        } else
+        } else {
             println("Leider falsch.")
+            println()
+        }
     }
 }

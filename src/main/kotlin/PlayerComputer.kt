@@ -1,4 +1,4 @@
-open class PlayerComputer(name: String = "", age: Int = 0) : Player(name, age, win = false) {
+open class PlayerComputer(name: String = "", age: Int = 0) : Player(name, age) {
 
     val nameList = mutableListOf<String>("C3-PO", "JARVIS", "STORM-TROOPER", "WALL-E", "R2D2")
     val ageList = 6..99

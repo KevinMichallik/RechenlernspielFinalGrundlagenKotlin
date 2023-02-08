@@ -22,14 +22,19 @@ class RechnungDivisionComputer(calcRange1: IntRange = 10..10, calcRange2: IntRan
 
 
         var resultPlayer = (result2 - 2..result2 + 2).random()
+        win = false
 
         println("Das Ergebnis des Computers ist: $resultPlayer")
 
         if (resultPlayer == result2) {
             win = true
             println("Super weiter so!!")
+            println()
 
-        } else
+        } else {
+
             println("Leider falsch.")
+            println()
+        }
     }
 }

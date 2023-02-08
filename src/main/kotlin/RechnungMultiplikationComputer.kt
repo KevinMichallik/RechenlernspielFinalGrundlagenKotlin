@@ -17,14 +17,18 @@ class RechnungMultiplikationComputer(calcRange1: IntRange = 1..10, calcRange2: I
 
 
         var resultPlayer = (result - 2..result + 2).random()
+        win = false
 
         println("Das Ergebnis des Computers ist: $resultPlayer")
 
         if (resultPlayer == result) {
             win = true
             println("Super weiter so!!")
+            println()
 
-        } else
+        } else {
             println("Leider falsch.")
+            println()
+        }
     }
 }

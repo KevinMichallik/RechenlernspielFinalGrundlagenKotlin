@@ -1,4 +1,4 @@
-class RechnungSubtraktionComputer (calcRange1: IntRange = 50..100, calcRange2: IntRange = 1..49) :
+class RechnungSubtraktionComputer(calcRange1: IntRange = 50..100, calcRange2: IntRange = 1..49) :
     Rechnung(calcRange1, calcRange2) {
 
 
@@ -17,14 +17,18 @@ class RechnungSubtraktionComputer (calcRange1: IntRange = 50..100, calcRange2: I
 
 
         val resultPlayer = (result - 2..result + 2).random()
+        win = false
 
         println("Das Ergenis des Computers ist: $resultPlayer")
 
         if (resultPlayer == result) {
             win = true
             println("Super weiter so!!")
+            println()
 
-        } else
+        } else {
             println("Leider falsch.")
+            println()
+        }
     }
 }
