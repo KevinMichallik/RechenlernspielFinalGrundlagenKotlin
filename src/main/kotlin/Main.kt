@@ -25,14 +25,17 @@ fun main() {
     var spielende: Int
 
     // Begrüßung
-    println("Hallo und Willkommen im Rechenlernspiel!!")
-    println()
+    println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    println("+ Hallo und Willkommen im Rechenlernspiel!!                                                       +")
+    println("+-------------------------------------------------------------------------------------------------+")
 
 
     // Anzahl der Spieler muss angegeben werden und die Daten der Spieler
-    println("Bitte gib an, ob du alleine üben möchtest, oder ob Ihr zu zweit lernen möchtet.")
-    println("Tipp die 1 für alleine gegen den Computer spielen, oder die 2 wenn ihr gemeinsam lernen wollt:")
 
+    println("+ Bitte gib an, ob du alleine üben möchtest, oder ob Ihr zu zweit lernen möchtet.                 +")
+    println("+ Tipp die 1 für alleine gegen den Computer spielen, oder die 2 wenn ihr gemeinsam lernen wollt:  +")
+    println(" ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    println()
     playerQuantity = safeReadInt()
 
     while (playerQuantity < 1 || playerQuantity > 2) {
@@ -46,7 +49,7 @@ fun main() {
 
             println("Bitte gib deinen Namen ein:")
             player1.name = readln()
-            println("Bitte gib dein alter ein:")
+            println("Bitte gib dein Alter ein:")
             player1.age = safeReadInt()
 
         }
@@ -67,18 +70,24 @@ fun main() {
     spielerAnlegen()
 
     // Auswahl der Rundenanzahl pro Spiel
+    Thread.sleep(2000)
+    println()
     println("Wie viele Aufgaben soll die Spielrunde haben? Gib bitte eine Zahl ein:")
 
     roundQuantity = safeReadInt()
 
     // Auswahl der Rechenart
     fun calculationType() {
-        println("Jetzt ist es an der Zeit zu entscheiden was gerechnet werden soll.")
-        println("Folgendes steht zur Auswahl:")
-        println("1. - Addition")
-        println("2. - Subtraktion")
-        println("3. - Multiplikation")
-        println("4. - Division")
+        println()
+        println("+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +")
+        println("+ Jetzt ist es an der Zeit zu entscheiden was gerechnet werden soll.  +")
+        println("+ Folgendes steht zur Auswahl:                                        +")
+        println("+ 1. - Addition                                                       +")
+        println("+ 2. - Subtraktion                                                    +")
+        println("+ 3. - Multiplikation                                                 +")
+        println("+ 4. - Division                                                       +")
+        println("+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +")
+        println()
         Thread.sleep(1_000)
         println("Bitte wähle die Rechenart aus und gib die entsprechende Zahl ein:")
         calculationType = safeReadInt()
@@ -87,7 +96,6 @@ fun main() {
     }
     calculationType()
 
-    var spielbeginn = LocalTime.now()
 
     // Start der Aufgaben
     fun additionInGame() {
@@ -331,12 +339,7 @@ fun main() {
         divisionInGame()
     }
 
-    //TODO Spielzeit einfügen
 
-    var spielende1 = LocalTime.now()
-    var spielzeit = Duration.between(spielbeginn, spielende1)
-
-    println("Du hast für deine Aufgaben ")
 
     // Abschluss nach den Aufgaben & Abfrage ob weiter gespielt werden soll
     println()
