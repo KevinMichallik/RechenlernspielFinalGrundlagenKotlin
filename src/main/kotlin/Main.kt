@@ -29,7 +29,7 @@ fun main() {
     println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     println("+ Hallo und Willkommen im Rechenlernspiel!!                                                       +")
     println("+-------------------------------------------------------------------------------------------------+")
-
+    println("+                                                                                                 +")
 
     // Anzahl der Spieler muss angegeben werden und die Daten der Spieler
 
@@ -156,7 +156,7 @@ fun main() {
             Thread.sleep(1_000)
             if (player1.score == player2.score) println("Das Spiel ging unentschieden aus.")
             if (player1.score > player2.score) println("${player1.name} hat gewonnen!! Tolle Leistung für eine/n ${player1.age} jährige/n !")
-            else println("${player2.name} hat gewonnen! Tolle Leistung für eine/n ${player2.age} jährige/n !")
+            if (player1.score < player2.score) println("${player2.name} hat gewonnen! Tolle Leistung für eine/n ${player2.age} jährige/n !")
             Thread.sleep(1_000)
         }
     }
