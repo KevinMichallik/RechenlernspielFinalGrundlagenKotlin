@@ -1,5 +1,6 @@
 import java.time.Duration
 import java.time.LocalTime
+
 fun main() {
 
     // Spieler & Rechenarten
@@ -91,6 +92,12 @@ fun main() {
         Thread.sleep(1_000)
         println("Bitte wähle die Rechenart aus und gib die entsprechende Zahl ein:")
         calculationType = safeReadInt()
+
+        while (calculationType < 1 || calculationType > 4) {
+            println("Bitte gib eine gültige Zahl zwischen 1 & 4 ein.:")
+            calculationType = safeReadInt()
+        }
+
         Thread.sleep(1_000)
 
     }
@@ -338,7 +345,6 @@ fun main() {
     if (calculationType == 4) {
         divisionInGame()
     }
-
 
 
     // Abschluss nach den Aufgaben & Abfrage ob weiter gespielt werden soll
